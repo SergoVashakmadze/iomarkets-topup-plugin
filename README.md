@@ -1,10 +1,18 @@
 # IoMarkets Topup — Claude Code plugin
 
 Buy real-world things for your principal and pay per order in **USDC on Algorand** via
-[x402](https://x402.org): mobile airtime and data top-ups, travel eSIMs, prepaid bills, and
-bank / mobile-money / UPI payouts across 150+ countries.
+[x402](https://x402.org): **mobile airtime and data top-ups in 150+ countries**, delivered to
+any phone number.
 
-No account, no card, no API key handed to anyone.
+No account, no card, no API key handed to anyone. Money settles on chain *before* anything is
+bought, a delivery that fails is refunded on chain automatically, and every terminal order
+carries an ed25519-signed receipt naming both transactions.
+
+**What is live:** airtime and data. `type: "esim"`, `type: "bill"` and `type: "payout"` are
+implemented end to end — same quote, same settlement, same signed receipt — but each needs a
+supplier that is not currently wired, so they are **not** advertised.
+[`GET /v1/catalog?type=<type>`](https://iomarkets.app/v1/catalog?type=topup) is the live answer
+and returns an empty list for anything unavailable.
 
 ## Install
 

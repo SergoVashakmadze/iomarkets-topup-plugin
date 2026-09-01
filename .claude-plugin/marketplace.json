@@ -6,15 +6,23 @@
   },
   "metadata": {
     "description": "Real-world checkout for AI agents, paid per order in USDC on Algorand via x402.",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
       "name": "iomarkets-topup",
       "source": "./",
-      "description": "Buy airtime, data, eSIMs and payouts in 150+ countries. Paid per order in USDC on Algorand via x402 — no account, no card, no API key.",
+      "description": "Buy mobile airtime and data top-ups in 150+ countries, paid per order in USDC on Algorand via x402 \u2014 no account, no card, no API key.",
       "homepage": "https://iomarkets.app",
-      "keywords": ["x402", "algorand", "usdc", "topup", "airtime", "esim", "payments", "agentic-commerce"]
+      "keywords": [
+        "x402",
+        "algorand",
+        "usdc",
+        "topup",
+        "airtime",
+        "agentic-commerce",
+        "real-world"
+      ]
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "name": "iomarkets-topup",
   "displayName": "IoMarkets Topup",
-  "version": "0.1.0",
-  "description": "Buy real-world things for your principal with USDC on Algorand: mobile airtime and data top-ups, travel eSIMs, and bank / mobile-money / UPI payouts in 150+ countries. No account, no card, no API key. Signed proof of delivery; failed deliveries are refunded on-chain automatically.",
+  "version": "0.2.0",
+  "description": "Buy real-world goods for your principal with USDC on Algorand via x402: mobile airtime and data top-ups in 150+ countries, delivered to any phone number. No account, no card, no API key. Money settles on-chain before anything is bought, failed deliveries are refunded on-chain automatically, and every terminal order carries an ed25519-signed receipt naming both transactions. eSIMs, prepaid bills and international payouts are built but supplier-gated \u2014 GET /v1/catalog is the live answer.",
   "homepage": "https://iomarkets.app",
   "keywords": [
     "x402",
@@ -10,10 +10,8 @@
     "usdc",
     "topup",
     "airtime",
-    "esim",
-    "payments",
-    "remittance",
-    "agentic-commerce"
+    "agentic-commerce",
+    "real-world"
   ],
   "mcpServers": {
     "iomarkets-topup": {
