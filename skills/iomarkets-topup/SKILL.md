@@ -42,7 +42,7 @@ paragraph. A quote for an unavailable type is refused up front rather than accep
 - Respect the wallet budget you were given. Server-side caps are $50/order and $200/payer/day — **read `GET /v1/limits` rather than trusting these numbers**, which change without this file changing.
 - **Confirm the operator with the human before buying.** `/v1/lookup` detects it from the number range and is reliably wrong on MVNOs (Tesco Mobile, Giff Gaff, Lebara, Voxi, Sky resolve to the host network). A voucher bought for the wrong network delivers successfully, verifies, and cannot be redeemed or refunded. Use `other_brands` to correct it.
 - Top-ups are irreversible once delivered: read the number back to the human verbatim before `buy`.
-- Keep the receipt (`order.receipt`) — it is the proof of delivery, verifiable with `GET /v1/pubkey`.
+- Keep the receipt (`order.receipt`) — it is the proof of delivery. Check it with the `verify_receipt` tool, or `POST /v1/verify` with the receipt as the body: it checks the signature **and** both transactions on Algorand, and works on receipts from any server using the format (`/receipts.md`).
 - Do not retry a `buy` on a timeout without first checking `order_status`; the settlement may have succeeded.
 
 ## Install as MCP (Claude Code / Codex / Cursor / Hermes / OpenClaw)
