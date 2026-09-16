@@ -14,7 +14,7 @@ MIT-0
 
 ## Use Case:
 
-External users and agent developers use this skill to buy travel eSIMs for a traveller's own phone across 197 destinations, and to look up mobile operators, quote USDC prices, and complete human-confirmed airtime or data top-ups for supported phone numbers.
+External users and agent developers use this skill to buy travel eSIMs for a traveller's own phone across 200+ destinations, and to look up mobile operators, quote USDC prices, and complete human-confirmed airtime or data top-ups for supported phone numbers.
 
 ### Deployment Geography for Use:
 
@@ -61,7 +61,7 @@ Mitigation: Use the live catalog as the authority before offering prepaid bills,
 
 ## Skill Version(s):
 
-0.2.6 (source: frontmatter and server release metadata)
+0.2.7 (source: frontmatter and server release metadata)
 
 ## Ethical Considerations:
 
