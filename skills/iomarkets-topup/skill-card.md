@@ -61,7 +61,7 @@ Mitigation: Use the live catalog as the authority before offering prepaid bills,
 
 ## Skill Version(s):
 
-0.2.5 (source: frontmatter and server release metadata)
+0.2.6 (source: frontmatter and server release metadata)
 
 ## Ethical Considerations:
 

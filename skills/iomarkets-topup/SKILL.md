@@ -1,7 +1,7 @@
 ---
 name: iomarkets-topup
 description: Buy real-world things for your principal with USDC on Algorand via x402 — travel eSIMs for 197 destinations, and mobile airtime and data top-ups in 150+ countries delivered to any phone number. Use when the user is travelling and needs data abroad, asks to recharge or top up a phone, buys mobile data, or checks a USDC→local FX rate. No account, no card; signed proof of delivery; automatic on-chain refunds. Prepaid bills and international payouts are built but supplier-gated — GET /v1/catalog is the live answer.
-version: 0.2.5
+version: 0.2.6
 metadata:
   homepage: https://iomarkets.app
   agent_docs: https://iomarkets.app/agent.md
@@ -46,6 +46,8 @@ IoT devices, hotspots and automated background traffic. Do not buy one to put in
 4. **Pay** — `POST https://iomarkets.app/v1/orders` with `{ "quoteId" }` using your x402 client (Algorand USDC, `exact` scheme). First response is 402 with the exact amount; retry with the payment signature. 202 → order.
 5. **Poll** — `GET https://iomarkets.app/v1/orders/<orderId>` every 3 s until `terminal: true`. Report `status`, the `confirmation` (operator reference / eSIM LPA + install steps) and the `settlement_url`.
 6. **If refunded** — tell the human the money is back at their address (`refund_url`) and offer to retry with another offer.
+
+**No wallet, or the human should pay themselves?** Skip steps 4–5: `POST https://iomarkets.app/v1/links` with `{type, offerId, recipient, amount, note}` (topup or esim) and give the human the returned `url`. They see the exact price and approve it in their own Pera wallet. You never hold a key, and the eSIM QR code appears on their page. A top-up link can be paid by anyone, so it works as a "top up my phone" request to family. Add `"ref": "<your Algorand address>"` to any quote or link to earn a share of margin on delivered orders (`GET /v1/referrals`).
 
 ## Rules
 - One quote = one payment. Quotes expire in 10 minutes; re-quote instead of retrying an expired one.
