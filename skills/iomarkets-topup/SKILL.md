@@ -1,7 +1,7 @@
 ---
 name: iomarkets-topup
-description: Buy real-world things for your principal with USDC on Algorand via x402 — travel eSIMs for 200+ destinations, and mobile airtime and data top-ups in 150+ countries delivered to any phone number. Use when the user is travelling and needs data abroad, asks to recharge or top up a phone, buys mobile data, or checks a USDC→local FX rate. No account, no card; signed proof of delivery; automatic on-chain refunds. Prepaid bills and international payouts are built but supplier-gated — GET /v1/catalog is the live answer.
-version: 0.2.7
+description: Buy real-world things for your principal with USDC on Algorand via x402 — travel eSIMs, and mobile airtime and data top-ups delivered to a phone number. A technology demonstration, tested on real data with real money in a limited pilot; not offered as a commercial service until the required licences, penetration testing and security audits are complete. Use when the user is travelling and needs data abroad, asks to recharge or top up a phone, buys mobile data, or checks a USDC→local FX rate. No account, no card; signed proof of delivery; automatic on-chain refunds. Prepaid bills and international payouts are built but supplier-gated — GET /v1/catalog is the authority on what is available.
+version: 0.2.8
 metadata:
   homepage: https://iomarkets.app
   agent_docs: https://iomarkets.app/agent.md
@@ -12,20 +12,27 @@ metadata:
 
 Real-world checkout for agents. Four HTTP calls, or the `iomarkets-topup` MCP server (`pnpm mcp` in the repo).
 
-## What is live
+**Status: technology demonstration.** It has been tested on real data with real money in a limited pilot, and it
+is not offered as a commercial service until the required licences, penetration testing and security audits are
+complete. Payments are real: they settle USDC on Algorand mainnet.
 
-**Two products, both selling today:**
+## Available in this pilot
 
-- **`type: "esim"` — travel eSIMs, 200+ destinations.** $0.50–$50 a package. There is no recipient: an
+**Two products are available in this pilot:**
+
+- **`type: "esim"` — travel eSIMs.** $0.50–$50 a package. There is no recipient: an
   eSIM is delivered to the buyer as an **LPA activation string** they install on their own phone.
-  `GET /v1/countries?type=esim` lists every destination; `GET /v1/catalog?type=esim&country=JP` lists
+  `GET /v1/countries?type=esim` lists the destinations; `GET /v1/catalog?type=esim&country=JP` lists
   the packages for one.
-- **`type: "topup"` — mobile airtime and data, 150+ countries**, delivered to a phone number.
+- **`type: "topup"` — mobile airtime and data**, delivered to a phone number.
+
+Coverage changes with supplier availability, so read `GET /v1/countries?type=<type>` rather than assuming a
+country is served.
 
 `type: "bill"` and `type: "payout"` (international payments) are implemented end to end — same quote,
 same settlement, same signed receipt — but each needs a supplier that is not currently wired. **Do not
-offer those two on the strength of this file.** `GET /v1/catalog?type=<type>` is the live answer and
-returns an empty list for anything unavailable; `/agent.md` names the live set in its first paragraph.
+offer those two on the strength of this file.** `GET /v1/catalog?type=<type>` is the authoritative answer and
+returns an empty list for anything unavailable; `/agent.md` names the available set near the top.
 A quote for an unavailable type is refused up front rather than accepted and then failed.
 
 ⚠️ **eSIMs are sold for travel, on ordinary phones.** The supplier's terms exclude routers, dongles,

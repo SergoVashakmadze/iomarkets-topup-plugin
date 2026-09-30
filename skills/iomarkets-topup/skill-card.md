@@ -2,7 +2,7 @@
 
 IoMarkets Topup helps agents quote and buy travel eSIMs and mobile airtime or data top-ups with USDC on Algorand via x402.
 
-This skill is ready for commercial/non-commercial use.
+IoMarkets Topup is a technology demonstration that has been tested on real data with real money in a limited pilot. It is not offered as a commercial service until the required licences, penetration testing and security audits are complete. Payments are real: they settle USDC on Algorand mainnet.
 
 ## Publisher:
 
@@ -14,11 +14,11 @@ MIT-0
 
 ## Use Case:
 
-External users and agent developers use this skill to buy travel eSIMs for a traveller's own phone across 200+ destinations, and to look up mobile operators, quote USDC prices, and complete human-confirmed airtime or data top-ups for supported phone numbers.
+External users and agent developers use this skill to buy travel eSIMs for a traveller's own phone, and to look up mobile operators, quote USDC prices, and complete human-confirmed airtime or data top-ups for supported phone numbers.
 
 ### Deployment Geography for Use:
 
-Global, subject to live catalog availability in supported countries.
+Limited to the countries and products available in this pilot; `GET /v1/countries` and `GET /v1/catalog` are the authority.
 
 ## Known Risks and Mitigations:
 
@@ -40,7 +40,7 @@ Mitigation: Prefer the hosted MCP when possible; for local signing, store the mn
 
 Risk: Some product types are supplier-gated or unavailable even if implemented.
 
-Mitigation: Use the live catalog as the authority before offering prepaid bills, international payouts, or any option to a human. A quote for an unavailable type is refused up front rather than accepted and then failed.
+Mitigation: Use the catalog as the authority before offering prepaid bills, international payouts, or any option to a human. A quote for an unavailable type is refused up front rather than accepted and then failed.
 
 ## Reference(s):
 
@@ -61,7 +61,7 @@ Mitigation: Use the live catalog as the authority before offering prepaid bills,
 
 ## Skill Version(s):
 
-0.2.7 (source: frontmatter and server release metadata)
+0.2.8 (source: frontmatter and server release metadata)
 
 ## Ethical Considerations:
 
