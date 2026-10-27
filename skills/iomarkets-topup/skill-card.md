@@ -2,7 +2,7 @@
 
 IoMarkets Topup helps agents quote and buy travel eSIMs and mobile airtime or data top-ups with USDC on Algorand via x402.
 
-IoMarkets Topup is a technology demonstration that has been tested on real data with real money in a limited pilot. It is not offered as a commercial service until the required licences, penetration testing and security audits are complete. Payments are real: they settle USDC on Algorand mainnet.
+Payments are real: they settle USDC on Algorand mainnet.
 
 ## Publisher:
 
@@ -61,7 +61,7 @@ Mitigation: Use the catalog as the authority before offering prepaid bills, inte
 
 ## Skill Version(s):
 
-0.2.8 (source: frontmatter and server release metadata)
+0.2.9 (source: frontmatter and server release metadata)
 
 ## Ethical Considerations:
 

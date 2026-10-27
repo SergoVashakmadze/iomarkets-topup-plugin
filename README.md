@@ -4,9 +4,7 @@ Buy real-world things for your principal and pay per order in **USDC on Algorand
 [x402](https://x402.org): **travel eSIMs, and mobile airtime and data top-ups** delivered to a
 phone number.
 
-**Status: technology demonstration.** It has been tested on real data with real money in a limited
-pilot, and it is not offered as a commercial service until the required licences, penetration testing
-and security audits are complete. Payments are real: they settle USDC on Algorand mainnet.
+**Payments are real:** they settle USDC on Algorand mainnet.
 
 No account, no card, no API key handed to anyone. Money settles on chain *before* anything is
 bought, a delivery that fails is refunded on chain automatically, and every terminal order
