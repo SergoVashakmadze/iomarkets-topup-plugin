@@ -1,7 +1,7 @@
 ---
 name: iomarkets-topup
-description: Buy real-world things for your principal with USDC on Algorand via x402 — travel eSIMs, and mobile airtime and data top-ups delivered to a phone number. A technology demonstration, tested on real data with real money in a limited pilot; not offered as a commercial service until the required licences, penetration testing and security audits are complete. Use when the user is travelling and needs data abroad, asks to recharge or top up a phone, buys mobile data, or checks a USDC→local FX rate. No account, no card; signed proof of delivery; automatic on-chain refunds. Prepaid bills and international payouts are built but supplier-gated — GET /v1/catalog is the authority on what is available.
-version: 0.2.8
+description: Buy real-world things for your principal with USDC on Algorand via x402 — travel eSIMs, and mobile airtime and data top-ups delivered to a phone number. Use when the user is travelling and needs data abroad, asks to recharge or top up a phone, buys mobile data, or checks a USDC→local FX rate. No account, no card; signed proof of delivery; automatic on-chain refunds. Prepaid bills and international payouts are built but supplier-gated — GET /v1/catalog is the authority on what is available.
+version: 0.2.9
 metadata:
   homepage: https://iomarkets.app
   agent_docs: https://iomarkets.app/agent.md
@@ -12,9 +12,7 @@ metadata:
 
 Real-world checkout for agents. Four HTTP calls, or the `iomarkets-topup` MCP server (`pnpm mcp` in the repo).
 
-**Status: technology demonstration.** It has been tested on real data with real money in a limited pilot, and it
-is not offered as a commercial service until the required licences, penetration testing and security audits are
-complete. Payments are real: they settle USDC on Algorand mainnet.
+**Payments are real:** they settle USDC on Algorand mainnet.
 
 ## Available in this pilot
 
