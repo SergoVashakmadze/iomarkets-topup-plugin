@@ -1,7 +1,7 @@
 ---
 name: iomarkets-topup
 description: Buy real-world things for your principal with USDC on Algorand via x402 — travel eSIMs, and mobile airtime and data top-ups delivered to a phone number. Use when the user is travelling and needs data abroad, asks to recharge or top up a phone, buys mobile data, or checks a USDC→local FX rate. No account, no card; signed proof of delivery; automatic on-chain refunds. Prepaid bills and international payouts are built but supplier-gated — GET /v1/catalog is the authority on what is available.
-version: 0.2.9
+version: 0.2.10
 metadata:
   homepage: https://iomarkets.app
   agent_docs: https://iomarkets.app/agent.md
@@ -41,6 +41,7 @@ IoT devices, hotspots and automated background traffic. Do not buy one to put in
 - "Cheapest 5GB eSIM for Europe" · "Does this work in Georgia?" → `GET /v1/countries?type=esim`
 - "Top up / recharge +91…, +234…, +995… with N (local currency)" → topup
 - "Buy mobile data for this number" → topup
+- "eSIMs for our 12-person team trip" · "Data for every conference delegate" → group eSIMs
 - "What's the USDC→INR rate?"
 
 ## Procedure
@@ -53,6 +54,22 @@ IoT devices, hotspots and automated background traffic. Do not buy one to put in
 6. **If refunded** — tell the human the money is back at their address (`refund_url`) and offer to retry with another offer.
 
 **No wallet, or the human should pay themselves?** Skip steps 4–5: `POST https://iomarkets.app/v1/links` with `{type, offerId, recipient, amount, note}` (topup or esim) and give the human the returned `url`. They see the exact price and approve it in their own Pera wallet. You never hold a key, and the eSIM QR code appears on their page. A top-up link can be paid by anyone, so it works as a "top up my phone" request to family. Add `"ref": "<your Algorand address>"` to any quote or link to earn a share of margin on delivered orders (`GET /v1/referrals`).
+
+## Group eSIMs: one payment, N claim links
+For a group trip, a delegation or event giveaways. Each eSIM is bought when its link is claimed; links nobody
+claims within 30 days are refunded to the paying wallet in one on-chain transfer.
+1. **Quote** — `POST https://iomarkets.app/v1/vouchers/quote` with `{"offerId":"ea-…","count":10,"note":"…"}` (MCP: `quote_vouchers`).
+   You get `quoteId`, `price_usdc` (count × one eSIM) and `vouchers: {count, unit_price_usdc, claim_window_days}`.
+2. **Confirm with the human** — the package, the count, the total USDC price, and that unclaimed links refund after the claim window.
+3. **Pay** — exactly like an order: `POST https://iomarkets.app/v1/orders` with `{ "quoteId" }` over x402. The paid response is
+   the batch: `batchId` and `codes: [{n, code, claim_url}, …]`.
+4. **Hand out** — each link works once (whoever opens it first gets that eSIM), so send each person their own, privately.
+   Keep the `batchId`: it is the only handle on the links. `GET https://iomarkets.app/v1/vouchers/<batchId>` (MCP: `voucher_batch`)
+   shows claimed count, per-link status, expiry and any refund.
+
+Limits: 2–50 eSIMs, each within the per-order limit, the batch within $100 (read `GET /v1/limits`). Each claim is an ordinary
+order with its own signed receipt naming the batch payment. No wallet? Send the human to
+`https://iomarkets.app/pay/?mode=vouchers` to buy the batch in their own Pera wallet.
 
 ## Rules
 - One quote = one payment. Quotes expire in 10 minutes; re-quote instead of retrying an expired one.
