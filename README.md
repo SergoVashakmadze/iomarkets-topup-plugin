@@ -1,5 +1,7 @@
 # IoMarkets Topup — Claude Code plugin
 
+> **Demo only: payments are switched off and nothing can be bought.** This is a technology demonstration, not a commercial service.
+
 Buy real-world things for your principal and pay per order in **USDC on Algorand** via
 [x402](https://x402.org): **travel eSIMs, and mobile airtime and data top-ups** delivered to a
 phone number.
